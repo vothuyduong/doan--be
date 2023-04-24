@@ -31,7 +31,7 @@ public class ProductController {
   @GetMapping("")
   public ResponseEntity<?> getList(
       @RequestParam(name = "pageCurrent", required = false, defaultValue = "1") Integer pageCurrent,
-      @RequestParam(name = "pageSize", required = false, defaultValue = "5") Integer pageSize,
+      @RequestParam(name = "pageSize", required = false, defaultValue = "4") Integer pageSize,
       @RequestParam(name = "keySearch", required = false) String keySearch,
       @RequestParam(name = "orderBy", required = false) String orderBy,
       @RequestParam(name = "sortType", required = false) String sortType) {
@@ -61,7 +61,7 @@ public class ProductController {
       @RequestParam(name = "idSize", required = false) Integer idSize,
       @RequestParam(name = "keySearch", required = false) String keySearch,
       @RequestParam(name = "pageCurrent", required = false, defaultValue = "1") Integer pageCurrent,
-      @RequestParam(name = "pageSize", required = false, defaultValue = "10") Integer pageSize) {
+      @RequestParam(name = "pageSize", required = false, defaultValue = "9") Integer pageSize) {
     PageDTO rs = productService.getListProduct(idCategory, idSize, keySearch, pageCurrent,
         pageSize);
     return responseEntityUtil.generateResponse(HttpStatus.OK, rs.getData(), rs.getCount(), pageSize,
