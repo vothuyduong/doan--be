@@ -36,8 +36,4 @@ public class CartController {
   public ResponseEntity<?> getDetailCart() throws TuQuanAoException {
     return responseEntityUtil.generateResponse(HttpStatus.OK, cartService.getDetailCart());
   }
-
-  public ResponseEntity<?> deleteItem() {
-
-  }
 }
