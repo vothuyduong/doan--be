@@ -47,7 +47,21 @@ public class CartService extends BasicService {
     return detailCartRepository.getListCart(idCart);
   }
 
-  public void deleteItem(Integer idProduct, Integer idSize) {
+  @Transactional
+  public void deleteItem(Integer idProduct, Integer idSize) throws TuQuanAoException {
+    Integer idCart = cartRepository.findByIdCustomer(getUserDetail().getIdCustomer()).getIdCart();
+    DetailCart detailCart = detailCartRepository.findByIdCartAndIdSizeAndIdProduct(idCart, idSize, idProduct);
+    detailCartRepository.delete(detailCart);
+  }
+
+  @Transactional
+  public void deleteAll() throws TuQuanAoException {
+    Integer idCart = cartRepository.findByIdCustomer(getUserDetail().getIdCustomer()).getIdCart();
+    detailCartRepository.deleteDetailCartsByIdCart(idCart);
+  }
+
+  @Transactional
+  public void updateQuantity(Integer idProduct, Integer idSize, Integer quantity) {
 
   }
 }

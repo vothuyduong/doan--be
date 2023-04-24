@@ -2,6 +2,7 @@ package supham.cntt.tuquanao.dao;
 
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import supham.cntt.tuquanao.dto.PriceDTO;
@@ -30,4 +31,7 @@ public interface DetailCartRepository extends JpaRepository<DetailCart, Integer>
       + "WHERE detail.idCart = ?1 "
   )
   List<PriceDTO> getListCart(Integer idCart);
+
+  @Modifying
+  void deleteDetailCartsByIdCart(Integer idCart);
 }

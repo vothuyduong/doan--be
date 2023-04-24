@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +38,16 @@ public class CartController {
     return responseEntityUtil.generateResponse(HttpStatus.OK, cartService.getDetailCart());
   }
 
-  public ResponseEntity<?> deleteItem() {
+  @DeleteMapping("/delete-item")
+  public ResponseEntity<?> deleteItem(@RequestParam(name = "idProduct") Integer idProduct, @RequestParam(name = "idSize") Integer idSize)
+      throws TuQuanAoException {
+    cartService.deleteItem(idProduct, idSize);
+    return responseEntityUtil.generateResponse(HttpStatus.OK);
+  }
 
+  @DeleteMapping("/delete-all")
+  public ResponseEntity<?> deleteAll() throws TuQuanAoException {
+    cartService.deleteAll();
+    return responseEntityUtil.generateResponse(HttpStatus.OK);
   }
 }
