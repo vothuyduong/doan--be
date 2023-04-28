@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class GlobalConstants {
 
-  public static final String DATE_FORMAT = "yyyy/MM/dd";
+  public static final String DATE_FORMAT = "MM/dd/yyyy";
   public static final String DATE_TIME_FORMAT = "yyyy/MM/dd HH:mm:ss";
   public static final String PROPERTIES_MESSAGE = "messages";
 

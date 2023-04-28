@@ -2,6 +2,7 @@ package supham.cntt.tuquanao.service;
 
 import java.util.Objects;
 import javax.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -15,6 +16,7 @@ import supham.cntt.tuquanao.exception.TuQuanAoException;
 import supham.cntt.tuquanao.model.Customer;
 
 @Service
+@Slf4j
 public class CustomerService extends BasicService{
 
   @Transactional
@@ -28,6 +30,7 @@ public class CustomerService extends BasicService{
       Customer cusNew = customerRegisterDTOToCustomer.customerRegisterDTOToCustomer(registerDTO);
       customerRepository.save(cusNew);
     } catch (Exception e) {
+      log.error(e.getMessage());
       throw new TuQuanAoException(Message.SEVER_ERROR, HttpStatus.INTERNAL_SERVER_ERROR.value());
     }
   }

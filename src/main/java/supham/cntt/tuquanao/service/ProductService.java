@@ -220,20 +220,4 @@ public class ProductService extends BasicService {
     String[] fileNameParts = fileName.split("\\.");
     return fileNameParts[fileNameParts.length - 1];
   }
-
-  private String getPicture(Integer idProduct) {
-    Picture picture = pictureRepository.findByIdProduct(idProduct);
-    String encodedString = "";
-    if (Objects.nonNull(picture)) {
-      Path filePath = Paths.get(picture.getUri() + "/" + picture.getNamePicture());
-      byte[] fileContent = new byte[0];
-      try {
-        fileContent = FileUtils.readFileToByteArray(new File(filePath.toUri()));
-      } catch (IOException e) {
-        throw new RuntimeException(e);
-      }
-      encodedString = Base64.getEncoder().encodeToString(fileContent);
-    }
-    return encodedString;
-  }
 }

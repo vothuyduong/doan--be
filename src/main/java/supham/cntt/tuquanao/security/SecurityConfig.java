@@ -69,7 +69,8 @@ public class SecurityConfig {
 
     http.authorizeRequests()
         .antMatchers(
-            "/login", "/register")
+            "/login", "/register", "/product/list-new", "/product/list-pro", "/product/detail",
+            "/product/list-lq", "/size", "/category", "/donation-form/save")
         .permitAll().anyRequest().authenticated();
     http.rememberMe().key("uniqueAndSecret").tokenValiditySeconds(this.cookieExpirationTime);
     http.addFilterBefore(

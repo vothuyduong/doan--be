@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import supham.cntt.tuquanao.dto.PriceDTO;
+import supham.cntt.tuquanao.dto.PriceCartDTO;
 import supham.cntt.tuquanao.model.DetailCart;
 
 @Repository
@@ -14,7 +14,7 @@ public interface DetailCartRepository extends JpaRepository<DetailCart, Integer>
   DetailCart findByIdCartAndIdSizeAndIdProduct(Integer idCart, Integer idSize, Integer idProduct);
 
   @Query(value = ""
-      + "SELECT new supham.cntt.tuquanao.dto.PriceDTO( "
+      + "SELECT new supham.cntt.tuquanao.dto.PriceCartDTO( "
       + "detail.idProduct, "
       + "pro.nameProduct, "
       + "detail.idSize, "
@@ -30,8 +30,13 @@ public interface DetailCartRepository extends JpaRepository<DetailCart, Integer>
       + "ON detail.idSize = pri.idSize AND detail.idProduct = pri.idProduct "
       + "WHERE detail.idCart = ?1 "
   )
-  List<PriceDTO> getListCart(Integer idCart);
+  List<PriceCartDTO> getListCart(Integer idCart);
 
   @Modifying
-  void deleteDetailCartsByIdCart(Integer idCart);
+  @Query(value = ""
+      + "UPDATE DetailCart de "
+      + "SET de.quantity = ?4 "
+      + "WHERE de.idCart = ?1 AND de.idProduct = ?2 AND de.idSize = ?3 "
+  )
+  void updateQuantity(Integer idCart, Integer idProduct, Integer idSize, Integer quantity);
 }

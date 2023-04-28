@@ -1,6 +1,6 @@
 package supham.cntt.tuquanao.dto;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,18 +13,18 @@ public class CustomerRegisterDTO {
 
   private Integer idCustomer;
 
-  @NotEmpty(message = "name.empty")
+  @NotBlank(message = "name.blank")
   private String name;
 
   private String address;
 
   private String phone;
 
-  @NotEmpty(message = "username.empty")
-  @Size(min = 2, max = 15)
+  @NotBlank(message = "username.blank")
+  @Size(min = 2, max = 30)
   private String username;
 
-  @NotEmpty(message = "password.empty")
-  @Size(min = 4, max = 20)
+  @NotBlank(message = "password.blank")
+  @Size(min = 4, max = 50)
   private String password;
 }

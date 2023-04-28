@@ -1,6 +1,6 @@
 package supham.cntt.tuquanao.dto;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,11 +11,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CustomerLoginDTO {
 
-  @NotEmpty(message = "username.empty")
-  @Size(min = 2, max = 15)
+  @NotBlank(message = "username.empty")
+  @Size(min = 2, max = 30)
   private String username;
 
-  @NotEmpty(message = "password.empty")
-  @Size(min = 4, max = 20)
+  @NotBlank(message = "password.empty")
+  @Size(min = 4, max = 50)
   private String password;
 }

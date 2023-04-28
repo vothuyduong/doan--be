@@ -26,7 +26,8 @@ public class CartController {
   CartService cartService;
 
   @PostMapping("/save")
-  public ResponseEntity<?> createCart(@RequestParam(name = "idProduct") Integer idProduct,
+  public ResponseEntity<?> createCart(
+      @RequestParam(name = "idProduct") Integer idProduct,
       @RequestParam(name = "idSize") Integer idSize,
       @RequestParam(name = "quantity") Integer quantity) throws TuQuanAoException {
     cartService.createCart(idProduct, idSize, quantity);
@@ -39,15 +40,18 @@ public class CartController {
   }
 
   @DeleteMapping("/delete-item")
-  public ResponseEntity<?> deleteItem(@RequestParam(name = "idProduct") Integer idProduct, @RequestParam(name = "idSize") Integer idSize)
+  public ResponseEntity<?> deleteItem(@RequestParam(name = "idProduct") Integer idProduct,
+      @RequestParam(name = "idSize") Integer idSize)
       throws TuQuanAoException {
     cartService.deleteItem(idProduct, idSize);
     return responseEntityUtil.generateResponse(HttpStatus.OK);
   }
 
-  @DeleteMapping("/delete-all")
-  public ResponseEntity<?> deleteAll() throws TuQuanAoException {
-    cartService.deleteAll();
+  @PostMapping("/update-quantity")
+  public ResponseEntity<?> updateQuantity(@RequestParam(name = "idProduct") Integer idProduct,
+      @RequestParam(name = "idSize") Integer idSize, @RequestParam(name = "quantity") Integer quantity)
+      throws TuQuanAoException {
+    cartService.updateQuantity(idProduct, idSize, quantity);
     return responseEntityUtil.generateResponse(HttpStatus.OK);
   }
 }
