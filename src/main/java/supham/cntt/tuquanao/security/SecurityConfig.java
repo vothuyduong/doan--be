@@ -70,7 +70,7 @@ public class SecurityConfig {
     http.authorizeRequests()
         .antMatchers(
             "/login", "/register", "/product/list-new", "/product/list-pro", "/product/detail",
-            "/product/list-lq", "/size", "/category", "/donation-form/save")
+            "/product/list-lq", "/size", "/category", "/donation-form/save", "/cart/count")
         .permitAll().anyRequest().authenticated();
     http.rememberMe().key("uniqueAndSecret").tokenValiditySeconds(this.cookieExpirationTime);
     http.addFilterBefore(

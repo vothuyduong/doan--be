@@ -32,11 +32,13 @@ public interface DetailCartRepository extends JpaRepository<DetailCart, Integer>
   )
   List<PriceCartDTO> getListCart(Integer idCart);
 
-  @Modifying
+  void deleteAllByIdCart(Integer idCart);
+
   @Query(value = ""
-      + "UPDATE DetailCart de "
-      + "SET de.quantity = ?4 "
-      + "WHERE de.idCart = ?1 AND de.idProduct = ?2 AND de.idSize = ?3 "
+      + "SELECT sum(de.quantity) "
+      + "FROM DetailCart de "
+      + "WHERE de.idCart = ?1 "
+      + "GROUP BY de.idCart "
   )
-  void updateQuantity(Integer idCart, Integer idProduct, Integer idSize, Integer quantity);
+  Integer countQuantityProduct(Integer idCart);
 }
