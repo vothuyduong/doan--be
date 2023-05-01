@@ -23,6 +23,8 @@ public class PriceCartDTO {
 
   private String base64;
 
+  private Double intoMoney;
+
   public PriceCartDTO(Integer idProduct, String nameProduct, Integer idSize, String nameSize,
       Double price, Integer quantity) {
     this.idProduct = idProduct;
@@ -31,5 +33,16 @@ public class PriceCartDTO {
     this.nameSize = nameSize;
     this.price = price;
     this.quantity = quantity;
+  }
+
+  public PriceCartDTO(Integer idProduct, String nameProduct, Integer idSize, String nameSize,
+      Double price, Integer quantity, String base64) {
+    this.idProduct = idProduct;
+    this.nameProduct = nameProduct;
+    this.idSize = idSize;
+    this.nameSize = nameSize;
+    this.price = price;
+    this.quantity = quantity;
+    this.base64 = base64;
   }
 }

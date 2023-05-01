@@ -1,5 +1,6 @@
 package supham.cntt.tuquanao.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -55,4 +56,15 @@ public class Orders {
 
   @Column(name = "date_create", nullable = false)
   private Date dateCreate;
+
+  public Orders(Integer idCustomer, String takeCustomer, String takeAddress,
+      String phoneCustomer, String paymentMethod, Double totalMoney, Date dateCreate) {
+    this.idCustomer = idCustomer;
+    this.takeCustomer = takeCustomer;
+    this.takeAddress = takeAddress;
+    this.phoneCustomer = phoneCustomer;
+    this.paymentMethod = paymentMethod;
+    this.totalMoney = totalMoney;
+    this.dateCreate = dateCreate;
+  }
 }

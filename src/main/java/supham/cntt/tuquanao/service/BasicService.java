@@ -18,7 +18,9 @@ import supham.cntt.tuquanao.dao.CartRepository;
 import supham.cntt.tuquanao.dao.CategoryRepository;
 import supham.cntt.tuquanao.dao.CustomerRepository;
 import supham.cntt.tuquanao.dao.DetailCartRepository;
+import supham.cntt.tuquanao.dao.DetailOrderRepository;
 import supham.cntt.tuquanao.dao.DonationFormRepository;
+import supham.cntt.tuquanao.dao.OrderRepository;
 import supham.cntt.tuquanao.dao.PictureRepository;
 import supham.cntt.tuquanao.dao.PriceRepository;
 import supham.cntt.tuquanao.dao.ProductRepository;
@@ -64,6 +66,12 @@ public class BasicService {
 
   @Autowired
   DonationFormRepository donationFormRepository;
+
+  @Autowired
+  OrderRepository orderRepository;
+
+  @Autowired
+  DetailOrderRepository detailOrderRepository;
 
   public CustomerMapper customerRegisterDTOToCustomer = Mappers.getMapper(CustomerMapper.class);
 
