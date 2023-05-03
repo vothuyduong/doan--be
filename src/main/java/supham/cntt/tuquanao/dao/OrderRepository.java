@@ -7,4 +7,5 @@ import supham.cntt.tuquanao.model.Orders;
 @Repository
 public interface OrderRepository extends JpaRepository<Orders, Integer> {
 
+  void deleteByIdOrder(Integer idOrder);
 }

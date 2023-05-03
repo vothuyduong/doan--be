@@ -58,6 +58,9 @@ public class GlobalConstants {
 
     //cart
     public static final String CART_QUANTITY_MIN_1 = "cart.quantity.min.1";
+
+    //order
+    public static final String QUANTITY_PRODUCT_NOT_ENOUGH = "quantity.product.not.enough";
   }
 
   public static class GenerateJWT {

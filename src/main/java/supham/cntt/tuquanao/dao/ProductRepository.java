@@ -99,8 +99,4 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
       + "WHERE (?1 IS NULL OR pro.nameProduct LIKE %?1% OR pro.description LIKE %?1%) "
   )
   Page<Product> findAll(String keySearch, Pageable pageable);
-
-  class CartDTO {
-
-  }
 }
