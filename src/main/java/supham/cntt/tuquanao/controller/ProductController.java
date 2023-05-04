@@ -96,4 +96,9 @@ public class ProductController {
     productService.deleteProduct(idProduct);
     return responseEntityUtil.generateResponse(HttpStatus.OK);
   }
+
+  @GetMapping("/count")
+  public ResponseEntity<?> countProduct() {
+    return responseEntityUtil.generateResponse(HttpStatus.OK, productService.countProduct());
+  }
 }

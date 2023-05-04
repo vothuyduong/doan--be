@@ -37,4 +37,8 @@ public class PriceService extends BasicService {
     Price pri = getDetail(idProduct, idSize);
     priceRepository.delete(pri);
   }
+
+  public Integer countPro() {
+    return priceRepository.countPro();
+  }
 }

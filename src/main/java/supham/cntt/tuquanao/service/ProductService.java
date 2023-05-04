@@ -220,4 +220,8 @@ public class ProductService extends BasicService {
     String[] fileNameParts = fileName.split("\\.");
     return fileNameParts[fileNameParts.length - 1];
   }
+
+  public Long countProduct() {
+    return productRepository.countProduct();
+  }
 }

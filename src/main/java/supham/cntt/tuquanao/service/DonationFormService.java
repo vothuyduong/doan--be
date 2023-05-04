@@ -21,4 +21,8 @@ public class DonationFormService extends BasicService{
     form.setStatus(requestDTO.getStatus());
     donationFormRepository.save(form);
   }
+
+  public Long countDona() {
+    return donationFormRepository.countDonationForm();
+  }
 }

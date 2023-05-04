@@ -35,6 +35,10 @@ public class CustomerService extends BasicService{
     }
   }
 
+  public Long countCustomer() {
+    return customerRepository.countCustomer();
+  }
+
   public JwtResponse login(CustomerLoginDTO loginDTO) throws TuQuanAoException {
     UsernamePasswordAuthenticationToken token =
         new UsernamePasswordAuthenticationToken(loginDTO.getUsername(), loginDTO.getPassword());

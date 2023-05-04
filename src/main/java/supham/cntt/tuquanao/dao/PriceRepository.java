@@ -41,4 +41,10 @@ public interface PriceRepository extends JpaRepository<Price, Integer> {
       + "WHERE pri.idProduct = ?1 and pri.idSize = ?2"
   )
   void updateQuantity(Integer idProduct, Integer idSize, Integer quanti);
+
+  @Query(value = ""
+      + "SELECT sum(pri.quantity) "
+      + "FROM Price pri "
+  )
+  Integer countPro();
 }

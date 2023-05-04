@@ -48,4 +48,9 @@ public class PriceController {
     priceService.delete(idProduct, idSize);
     return responseEntityUtil.generateResponse(HttpStatus.OK);
   }
+
+  @GetMapping("/count")
+  ResponseEntity<?> countQuantity() {
+    return responseEntityUtil.generateResponse(HttpStatus.OK, priceService.countPro());
+  }
 }
